@@ -56,7 +56,7 @@
 
 ### Association
 
-- has_one :transaction
+- belongs_to :transaction
 
 
 ## comments table
