@@ -62,11 +62,11 @@
 
 ## comments table
 
-| Column  | Type           | Options                        |
-| --------------------------------------------------------- |
-| comment | text           | null: false                    |
-| user    | references     | null: false, foreign_key: true |
-| product | references     | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ----------------------------------------------------- |
+| comment | text       | null: false                    |
+| user    | references | null: false, foreign_key: true |
+| product | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -76,10 +76,10 @@
 
 ## transaction table
 
-| Column  | Type           | Options                        |
-| --------------------------------------------------------- |
-| product | references     | null: false, foreign_key: true |
-| user    | references     | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ----------------------------------------------------- |
+| product | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
 
 ### Association
 
