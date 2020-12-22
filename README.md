@@ -17,7 +17,7 @@
 
 - has_many :comments
 - has_many :product
-- has_many :transaction
+- has_many :transactions
 
 
 
@@ -83,5 +83,5 @@
 ### Association
 
 - belongs_to :user
-- has_one :product
+- belongs_to :product
 - has_one :destination
