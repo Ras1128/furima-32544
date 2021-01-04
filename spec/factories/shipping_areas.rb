@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :area do
+  factory :shipping_area do
     
   end
 end
