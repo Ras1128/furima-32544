@@ -7,7 +7,7 @@ RSpec.describe Product, type: :model do
     end
 
       it '商品画像が空だと出品できないこと' do
-        @product.name = ""
+        @product.image = ""
         @product.valid?
         expect(@product.errors.full_messages).to include("Image can't be blank")
       end
