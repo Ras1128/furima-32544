@@ -61,9 +61,15 @@ RSpec.describe Product, type: :model do
       end
 
       it '価格の範囲が、¥300~¥9,999,999の間以外では出品できないこと' do
-        @product.price = "200"
+        @product.price = "299"
         @product.valid?
         expect(@product.errors.full_messages).to include("Price must be greater than or equal to 300")
+      end
+
+      it '価格の範囲が、¥300~¥9,999,999の間以外では出品できないこと' do
+        @product.price = "10000000"
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
 
       it '販売価格は半角数字以外では保存できないこと' do
