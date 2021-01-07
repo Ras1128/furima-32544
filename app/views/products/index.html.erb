@@ -127,14 +127,16 @@
     <ul class='item-lists'>
       <% @products.each do |product| %>
         <li class='list'>
-          <%= link_to "#" do %>
+          <%= link_to product_path(product.id) do %>
           <div class='item-img-content'>
             <%= image_tag product.image, class: "item-img" %>
 
             <%# 商品が売れていればsold outを表示しましょう %>
-            <div class='sold-out'>
-              <span>Sold Out!!</span>
-            </div>
+            <%# if @product = nil%>
+              <div class='sold-out'>
+                <span>Sold Out!!</span>
+              </div>
+            <%# end %>
             <%# //商品が売れていればsold outを表示しましょう %>
 
           </div>
@@ -154,8 +156,6 @@
         </li>
       <% end %>
 
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
       <% if @products == [] %>
         <li class='list'>
           <%= link_to '#' do %>
@@ -175,8 +175,6 @@
           <% end %>
         </li>
       <% end %>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
     </ul>
   </div>
   <%# /商品一覧 %>
