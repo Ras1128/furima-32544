@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_01_11_105736) do
   end
 
   create_table "destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "transaction_id", null: false
+    t.bigint "purchase_id", null: false
     t.string "post_code", null: false
     t.integer "shipping_area_id", null: false
     t.string "city", null: false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_01_11_105736) do
     t.string "phone_number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["transaction_id"], name: "index_destinations_on_transaction_id"
+    t.index ["purchase_id"], name: "index_destinations_on_purchase_id"
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2021_01_11_105736) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
-  create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -89,8 +89,8 @@ ActiveRecord::Schema.define(version: 2021_01_11_105736) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "destinations", "transactions"
+  add_foreign_key "destinations", "purchases"
   add_foreign_key "products", "users"
-  add_foreign_key "transactions", "products"
-  add_foreign_key "transactions", "users"
+  add_foreign_key "purchases", "products"
+  add_foreign_key "purchases", "users"
 end
