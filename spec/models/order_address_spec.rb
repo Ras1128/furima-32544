@@ -35,8 +35,15 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Post code can't be blank")
       end
 
-      it '都道府県が空だと購入できないこと' do
+      it '都道府県の値が１だと購入できないこと' do
         @order_address.shipping_area_id = 1
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Shipping area can't be blank")
+      end
+
+
+      it '都道府県の値が空だと購入できないこと' do
+        @order_address.shipping_area_id = nil
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Shipping area can't be blank")
       end
@@ -57,6 +64,12 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.phone_number = ""
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
+      end
+
+      it '電話番号に英字が含まれると購入できないこと' do
+        @order_address.phone_number = "1234567891a"
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Don't include hyphen(-)")
       end
 
       it '郵便番号にハイフンがないと購入できないこと' do
