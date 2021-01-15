@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    if product.purchase != nil
+    if @product.purchase != nil
       redirect_to root_path
     end
   end
