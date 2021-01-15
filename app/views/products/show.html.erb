@@ -9,11 +9,11 @@
     <div class='item-img-content'>
       <%= image_tag @product.image ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <%# if @product == nil %>
-        <div class='sold-out'>
-          <span>Sold Out!!</span>
-        </div>
-      <%# end %>
+      <% if @product.purchase != nil %>
+              <div class='sold-out'>
+                <span>Sold Out!!</span>
+              </div>
+            <% end %>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>
     <div class="item-price-box">
@@ -26,7 +26,7 @@
     </div>
 
     
-    <% if user_signed_in?%>
+    <% if user_signed_in? && @product.purchase == nil %>
       <% if current_user.id == @product.user_id %>
         <%= link_to '商品の編集', edit_product_path(@product.id), method: :get, class: "item-red-btn" %>
         <p class='or-text'>or</p>

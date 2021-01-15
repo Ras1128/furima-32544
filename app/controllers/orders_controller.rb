@@ -1,8 +1,14 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :move_to_index
 
   def index
     @product = Product.find(params[:product_id])
-    @order_address = OrderAddress.new
+    if @product.purchase == nil
+      @order_address = OrderAddress.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
@@ -30,6 +36,12 @@ class OrdersController < ApplicationController
       card: order_address_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
   end
 
   
