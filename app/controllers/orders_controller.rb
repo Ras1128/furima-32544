@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_index
   before_action :set_product
   def index
     if @product.purchase != nil || current_user.id == @product.user_id
@@ -34,12 +33,6 @@ class OrdersController < ApplicationController
       card: order_address_params[:token],
       currency: 'jpy'
     )
-  end
-
-  def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
   end
 
   def set_product
