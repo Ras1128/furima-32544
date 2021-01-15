@@ -47,7 +47,7 @@
 
 | Column           | Type       | Options                        |
 | -------------------------------------------------------------- |
-| transaction      | references | null: false, foreign_key: true |
+| purchase         | references | null: false, foreign_key: true |
 | post_code        | string     | null: false                    |
 | shipping_area_id | integer    | null: false                    |
 | city             | string     | null: false                    |
@@ -74,7 +74,7 @@
 - belongs_to :user
 - belongs_to :product
 
-## transaction table
+## purchase table
 
 | Column  | Type       | Options                        |
 | ----------------------------------------------------- |

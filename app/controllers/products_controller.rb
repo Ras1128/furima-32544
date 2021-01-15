@@ -24,6 +24,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    if @product.purchase != nil
+      redirect_to root_path
+    end
   end
 
   def update
@@ -35,7 +38,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    #product = Product.find(params[:id])
     if @product.destroy
       redirect_to root_path
     else
@@ -59,4 +61,5 @@ class ProductsController < ApplicationController
   def products_params
     params.require(:product).permit(:name, :description, :price, :category_id, :item_condition_id, :postage_id, :shipping_area_id, :shipping_day_id, :image).merge(user_id: current_user.id)
   end
+
 end
