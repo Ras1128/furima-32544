@@ -67,4 +67,4 @@ gem 'image_processing', '~> 1.2'
 gem 'active_hash'
 gem 'payjp'
 gem "pg"
-572f0a0 (fix production database config)
+
